@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protect Our Vessels</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative; /* To allow z-index layering */
+        }
+        h1 {
+            text-align: center;
+        }
+        a {
+            color: blue;
+            text-decoration: underline;
+        }
+        .money-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .money {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            background: url("dollar.png") no-repeat center/contain;
+            animation: rain 10s linear infinite;
+            will-change: transform, opacity;
+        }
+        @keyframes rain {
+            0% {
+                transform: translate(0, -100%) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(0, 100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <strong>
+    <h1>Protect Our Vessels</h1>
+    <p>YOU MIGHT WANT TO PROTECT YOURSELF</p>
+    <p>OUR VESSELS HAVE BEEN PROTECTED BY FEDERAL LAW until now. The City of San Francisco has rejected the protection for vessels and it is now in court. If you want to keep your protection, you need to let your voice be heard in court, by a brief to the court.</p>
+    <p>UNDER FEDERAL LAW (<a href="rivers-and-harbors-act.html">THE RIVERS AND HARBORS ACT, 33 USC 5(b)</a>) PROTECTS VESSELS, THE OWNERS AND CREW, FROM CHARGES IN EXCESS OF THE BENEFITS TO THE VESSEL AND OBLIGATIONS BY ANYONE OTHER THAN THE FEDERAL GOVERNMENT</p>
+    </strong>
+    <p><u>Asking for Help</u></p>
+    <p>I am asking for your help in getting your organization step up, prepare, and file a brief with the Court of Appeals in San Francisco of your benefits of the Rivers and Harbors Act and how it will affect you if you loose that protection. Whatever you might need from us, and whatever we can do to assist, I would be very happy to present that.</p>
+
+    <script>
+        function createMoneyRain() {
+            const container = document.createElement('div');
+            container.className = 'money-rain';
+            document.body.appendChild(container);
+            for (let i = 0; i < 30; i++) { // Reduced to 20 for less density
+                const money = document.createElement('div');
+                money.className = 'money';
+                money.style.left = `${Math.random() * 100}%`;
+                money.style.animationDelay = `${Math.random() * 10}s`; // Random delay up to 10s
+                money.style.animationDuration = `${5 + Math.random() * 5}s`; // Duration between 5-10s
+                money.style.opacity = `0`; // Vary opacity
+                container.appendChild(money);
+            }
+        }
+        createMoneyRain();
+    </script>
+</body>
+</html>
